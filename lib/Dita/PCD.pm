@@ -8,7 +8,7 @@
 # initial - 0.1296. checkout: 0.083, optimized: 0.064 with each command a sub
 
 package Dita::PCD;
-our $VERSION = 20201030;
+our $VERSION = 20201101;
 use warnings FATAL => qw(all);
 use strict;
 use Carp qw(confess cluck);
@@ -1902,7 +1902,6 @@ if ($^O !~ m(bsd|linux)i)
 
 Test::More->builder->output("/dev/null")                                        # Show only errors during testing
   if ((caller(1))[0]//'Dita::PCD') eq "Dita::PCD";
-
 
 if (1)
  {my $startTime = time;
