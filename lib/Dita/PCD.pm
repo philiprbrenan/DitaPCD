@@ -540,7 +540,7 @@ sub transformDitaWithPcd($$$)                                                   
            }
          }
 
-        #lll "$d in $if at $df line $di";
+# lll "$d in $if at $df line $di";
         $stats{passed}{$df}{$di}++;
         $stats{passedFile}{$df}{$di}{$if}++;
        }->();
@@ -998,7 +998,7 @@ Parse the url representation of a parse tree.
 B<Example:>
 
 
-  if (1)                                                                          
+  if (1)
    {my $testUrl =
      {q(001_action)    => q(),
       q(001_rowType1)  => q(comment),
@@ -1015,19 +1015,19 @@ B<Example:>
       q(003_context_1) => q(ph),
       q(003_context_2) => q(title),
       q(003_context_3) => q()};
-  
-  
+
+
     my $parseTree = parseUrlRepresentationOfPcd($testUrl);  # 𝗘𝘅𝗮𝗺𝗽𝗹𝗲
 
-  
+
     ok representPcdParseTreeAsText($parseTree) eq <<END;
   # Sample Pcd file
-  
+
   sf-111 unwrap ph under title
     unwrap ph title
   END
    }
-  
+
 
 This method can be imported via:
 
@@ -1046,7 +1046,7 @@ B<Example:>
 
       my $in  = temporaryFolder;
       my $out = temporaryFolder;
-  
+
       my $inXml = <<END;
   <a>
     <b>
@@ -1061,7 +1061,7 @@ B<Example:>
     </B>
   </a>
   END
-  
+
       my $outXml = <<END;
   <a>
     <b>
@@ -1074,51 +1074,51 @@ B<Example:>
     </b>
   </a>
   END
-  
+
       writeFile(fpe($in, qw(1 dita)), $inXml);
-  
+
       my $inFile = writeFile(fpe($in, qw(test pcd)), <<END);
   Change d under c under b to D
     change D d c b
-  
+
   Change B to b
     change b B
-  
+
   Merge two adjacent b
     mlp b
   END
-  
+
       pleaseChangeDita(in=>$in, out=>$out);
-  
+
       ok readFile(fpe($out, qw(1 dita))) eq $outXml;
-  
-  
+
+
       my $blocks = compilePcdFile($inFile);  # 𝗘𝘅𝗮𝗺𝗽𝗹𝗲
 
-  
+
       ok dump(compilePcdFiles($in)) eq dump($blocks);
-  
+
       for(1..1)
        {my $x = Data::Edit::Xml::new($inXml);
-  
+
         transformDitaWithPcdOptimized(q(), $x, $blocks);
-  
+
         ok -p $x eq $outXml;
        }
-  
+
       clearFolder($_, 1e2) for $in, $out;
-  
+
     my $in = temporaryFolder;
-  
+
     my $f = owf(fpe($in, qw(test pcd)), <<END);
   # Sample Pcd file
   sf-111 unwrap ph under title
     unwrap2 ph2 title
   END
-  
+
     my $p = parsePcdFile($f);
     delete $p->{inputFile};
-  
+
     is_deeply $p, bless({
     errors => [],
     rows   => [
@@ -1148,7 +1148,7 @@ B<Example:>
                 }, "DitaPcdMethod"),
               ],
      }, "DitaPCDParseTree");
-  
+
 
 This method can be imported via:
 
@@ -1167,7 +1167,7 @@ B<Example:>
 
       my $in  = temporaryFolder;
       my $out = temporaryFolder;
-  
+
       my $inXml = <<END;
   <a>
     <b>
@@ -1182,7 +1182,7 @@ B<Example:>
     </B>
   </a>
   END
-  
+
       my $outXml = <<END;
   <a>
     <b>
@@ -1195,51 +1195,51 @@ B<Example:>
     </b>
   </a>
   END
-  
+
       writeFile(fpe($in, qw(1 dita)), $inXml);
-  
+
       my $inFile = writeFile(fpe($in, qw(test pcd)), <<END);
   Change d under c under b to D
     change D d c b
-  
+
   Change B to b
     change b B
-  
+
   Merge two adjacent b
     mlp b
   END
-  
+
       pleaseChangeDita(in=>$in, out=>$out);
-  
+
       ok readFile(fpe($out, qw(1 dita))) eq $outXml;
-  
+
       my $blocks = compilePcdFile($inFile);
-  
-  
+
+
       ok dump(compilePcdFiles($in)) eq dump($blocks);  # 𝗘𝘅𝗮𝗺𝗽𝗹𝗲
 
-  
+
       for(1..1)
        {my $x = Data::Edit::Xml::new($inXml);
-  
+
         transformDitaWithPcdOptimized(q(), $x, $blocks);
-  
+
         ok -p $x eq $outXml;
        }
-  
+
       clearFolder($_, 1e2) for $in, $out;
-  
+
     my $in = temporaryFolder;
-  
+
     my $f = owf(fpe($in, qw(test pcd)), <<END);
   # Sample Pcd file
   sf-111 unwrap ph under title
     unwrap2 ph2 title
   END
-  
+
     my $p = parsePcdFile($f);
     delete $p->{inputFile};
-  
+
     is_deeply $p, bless({
     errors => [],
     rows   => [
@@ -1269,7 +1269,7 @@ B<Example:>
                 }, "DitaPcdMethod"),
               ],
      }, "DitaPCDParseTree");
-  
+
 
 This method can be imported via:
 
@@ -1290,7 +1290,7 @@ B<Example:>
 
       my $in  = temporaryFolder;
       my $out = temporaryFolder;
-  
+
       my $inXml = <<END;
   <a>
     <b>
@@ -1305,7 +1305,7 @@ B<Example:>
     </B>
   </a>
   END
-  
+
       my $outXml = <<END;
   <a>
     <b>
@@ -1318,49 +1318,49 @@ B<Example:>
     </b>
   </a>
   END
-  
+
       writeFile(fpe($in, qw(1 dita)), $inXml);
-  
+
       my $inFile = writeFile(fpe($in, qw(test pcd)), <<END);
   Change d under c under b to D
     change D d c b
-  
+
   Change B to b
     change b B
-  
+
   Merge two adjacent b
     mlp b
   END
-  
+
       pleaseChangeDita(in=>$in, out=>$out);
-  
+
       ok readFile(fpe($out, qw(1 dita))) eq $outXml;
-  
+
       my $blocks = compilePcdFile($inFile);
-  
+
       ok dump(compilePcdFiles($in)) eq dump($blocks);
-  
+
       for(1..1)
        {my $x = Data::Edit::Xml::new($inXml);
-  
+
         transformDitaWithPcdOptimized(q(), $x, $blocks);
-  
+
         ok -p $x eq $outXml;
        }
-  
+
       clearFolder($_, 1e2) for $in, $out;
-  
+
     my $in = temporaryFolder;
-  
+
     my $f = owf(fpe($in, qw(test pcd)), <<END);
   # Sample Pcd file
   sf-111 unwrap ph under title
     unwrap2 ph2 title
   END
-  
+
     my $p = parsePcdFile($f);
     delete $p->{inputFile};
-  
+
     is_deeply $p, bless({
     errors => [],
     rows   => [
@@ -1390,7 +1390,7 @@ B<Example:>
                 }, "DitaPcdMethod"),
               ],
      }, "DitaPCDParseTree");
-  
+
 
 This method can be imported via:
 
@@ -1411,7 +1411,7 @@ B<Example:>
 
       my $in  = temporaryFolder;
       my $out = temporaryFolder;
-  
+
       my $inXml = <<END;
   <a>
     <b>
@@ -1426,7 +1426,7 @@ B<Example:>
     </B>
   </a>
   END
-  
+
       my $outXml = <<END;
   <a>
     <b>
@@ -1439,40 +1439,40 @@ B<Example:>
     </b>
   </a>
   END
-  
+
       writeFile(fpe($in, qw(1 dita)), $inXml);
-  
+
       my $inFile = writeFile(fpe($in, qw(test pcd)), <<END);
   Change d under c under b to D
     change D d c b
-  
+
   Change B to b
     change b B
-  
+
   Merge two adjacent b
     mlp b
   END
-  
+
       pleaseChangeDita(in=>$in, out=>$out);
-  
+
       ok readFile(fpe($out, qw(1 dita))) eq $outXml;
-  
+
       my $blocks = compilePcdFile($inFile);
-  
+
       ok dump(compilePcdFiles($in)) eq dump($blocks);
-  
+
       for(1..1)
        {my $x = Data::Edit::Xml::new($inXml);
-  
-  
+
+
         transformDitaWithPcdOptimized(q(), $x, $blocks);  # 𝗘𝘅𝗮𝗺𝗽𝗹𝗲
 
-  
+
         ok -p $x eq $outXml;
        }
-  
+
       clearFolder($_, 1e2) for $in, $out;
-  
+
 
 This method can be imported via:
 
@@ -1491,7 +1491,7 @@ B<Example:>
 
       my $in  = temporaryFolder;
       my $out = temporaryFolder;
-  
+
       my $inXml = <<END;
   <a>
     <b>
@@ -1506,7 +1506,7 @@ B<Example:>
     </B>
   </a>
   END
-  
+
       my $outXml = <<END;
   <a>
     <b>
@@ -1519,51 +1519,51 @@ B<Example:>
     </b>
   </a>
   END
-  
+
       writeFile(fpe($in, qw(1 dita)), $inXml);
-  
+
       my $inFile = writeFile(fpe($in, qw(test pcd)), <<END);
   Change d under c under b to D
     change D d c b
-  
+
   Change B to b
     change b B
-  
+
   Merge two adjacent b
     mlp b
   END
-  
-  
+
+
       pleaseChangeDita(in=>$in, out=>$out);  # 𝗘𝘅𝗮𝗺𝗽𝗹𝗲
 
-  
+
       ok readFile(fpe($out, qw(1 dita))) eq $outXml;
-  
+
       my $blocks = compilePcdFile($inFile);
-  
+
       ok dump(compilePcdFiles($in)) eq dump($blocks);
-  
+
       for(1..1)
        {my $x = Data::Edit::Xml::new($inXml);
-  
+
         transformDitaWithPcdOptimized(q(), $x, $blocks);
-  
+
         ok -p $x eq $outXml;
        }
-  
+
       clearFolder($_, 1e2) for $in, $out;
-  
+
     my $in = temporaryFolder;
-  
+
     my $f = owf(fpe($in, qw(test pcd)), <<END);
   # Sample Pcd file
   sf-111 unwrap ph under title
     unwrap2 ph2 title
   END
-  
+
     my $p = parsePcdFile($f);
     delete $p->{inputFile};
-  
+
     is_deeply $p, bless({
     errors => [],
     rows   => [
@@ -1593,7 +1593,7 @@ B<Example:>
                 }, "DitaPcdMethod"),
               ],
      }, "DitaPCDParseTree");
-  
+
 
 This method can be imported via:
 
@@ -1612,11 +1612,11 @@ Apply a pcd string to an xml string and return the resulting string
 B<Example:>
 
 
-  
+
   ok pleaseChangeDitaString(q(<a><b>C</b></a>), qq(Unwrap
   unwrap b))->string eq qq(<a>C</a>);    # 𝗘𝘅𝗮𝗺𝗽𝗹𝗲
 
-  
+
 
 This method can be imported via:
 
