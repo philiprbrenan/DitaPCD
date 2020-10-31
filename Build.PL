@@ -19,7 +19,13 @@ my $b = Module::Build->new(
                           "Test2::API" => 0,
                           "Test::More" => 0,
                         },
-);
+  meta_merge =>
+   {resources =>
+     {repository => 'https://github.com/philiprbrenan/DitaPCD',
+      bugtracker => 'https://github.com/philiprbrenan/DitaPCD/issues'
+     }
+   },
 
+ );
 
 $b->create_build_script();
