@@ -8,7 +8,7 @@
 # initial - 0.1296. checkout: 0.083, optimized: 0.064 with each command a sub
 
 package Dita::PCD;
-our $VERSION = 20201101;
+our $VERSION = 20201103;
 use warnings FATAL => qw(all);
 use strict;
 use Carp qw(confess cluck);
